@@ -168,14 +168,14 @@ const HotelInfo = ({ hotel }) => {
                       onClose={() => handleShowMap()}
                     />
                   )}
-                  {/* <StaticMap
+                  <StaticMap
                     onClose={() => handleShowMapContainer(false)}
                     choords={{
                       lat: Number(hotel.location.lat),
                       lng: Number(hotel.location.lng),
                     }}
                     name={hotel.name}
-                  /> */}
+                  />
                   
                 </div>
                 <div
