@@ -11,10 +11,10 @@ import {
 } from "@vis.gl/react-google-maps";
 import { geoLocationContext } from "../../../context/geoLocationContext";
 import Loading from "../alerts/Loading";
-import { REACT_APP_GOOGLE_MAPS_MAPID } from "../../../../env";
+
 
 const Maps = ({ onClose, defaultCenter, capturedChoords, onPlaceSelected }) => {
-  const mapId = REACT_APP_GOOGLE_MAPS_MAPID;
+  const mapId = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_MAPID;;
   const map = useMap();
   const { isLoading, userLocation, mainLocations } =
     useContext(geoLocationContext);

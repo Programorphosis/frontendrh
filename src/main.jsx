@@ -7,10 +7,10 @@ import App from "./components/App.jsx";
 import ProviderLogin from "./context/GlobalContextProvider.jsx";
 import ProviderReservations from "./context/reservationsContextProvider.jsx";
 import { APIProvider } from "@vis.gl/react-google-maps";
-import { REACT_APP_GOOGLE_MAPS_API_KEY } from "../env.js";
+
 
 import ProviderLocatiom from "./context/GeoLocationContextProvider.jsx";
-const apiKey = REACT_APP_GOOGLE_MAPS_API_KEY;
+const apiKey = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY;
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HeroUIProvider>

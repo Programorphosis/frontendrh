@@ -1145,12 +1145,12 @@ const Home = () => {
                                     }));
                                   }}
                                 >
-                                  <option value="">
+                                  <option value="" key={"default"}>
                                     Selecciona una ubicación
                                   </option>
                                   {mainLocations.map((location) => (
                                     <option
-                                      key={location.id}
+                                      key={location.name}
                                       value={location.name}
                                     >
                                       {capitalizeWords(location.name)}

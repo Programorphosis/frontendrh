@@ -113,7 +113,7 @@ const HotelList = (hotel) => {
   }, []);
 
   return (
-    <div className=" w-full h-auto py-4 flex flex-col card max-lg:bg-black max-lg:bg-opacity-90 bg-backgroundAlt bg-opacity-70 lg:rounded-2xl relative">
+    <div className=" w-full h-auto py-4 flex flex-col card bg-black max-lg:bg-opacity-90  lg:rounded-2xl relative">
       {/* sombra lado izquierdo */}
       <div
         className="absolute top-0 left-0  w-[25px] lg:w-[40px] h-full opacity-90 lg:rounded-2xl z-40"

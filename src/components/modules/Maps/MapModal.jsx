@@ -4,13 +4,13 @@ import centerMapIcon from "../../../static/centerLocatio.svg";
 import { Map, MapControl, useMap } from "@vis.gl/react-google-maps";
 import { geoLocationContext } from "../../../context/geoLocationContext";
 import Loading from "../alerts/Loading";
-import { REACT_APP_GOOGLE_MAPS_MAPID } from "../../../../env";
+
 import MapHandler from "./autocomplete/MapHandler";
 import { PoiMarkers } from "./customs/PoiMarkers";
 import ButtonClose from "../others/ButtonClose";
 
 const MapModal = ({ onClose, hotel }) => {
-  const mapId = REACT_APP_GOOGLE_MAPS_MAPID;
+  const mapId = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_MAPID;
   const map = useMap();
   const { isLoading, userLocation, mainLocations, defaultCenter } =
     useContext(geoLocationContext);

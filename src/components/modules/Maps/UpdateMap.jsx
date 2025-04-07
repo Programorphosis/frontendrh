@@ -6,7 +6,7 @@ import {
   ControlPosition,
   useMap,
 } from "@vis.gl/react-google-maps";
-import { REACT_APP_GOOGLE_MAPS_MAPID } from "../../../../env";
+
 
 const HotelLocationMap = ({ defaultCenter, onLocationSelected }) => {
   const map = useMap();
@@ -35,7 +35,7 @@ const HotelLocationMap = ({ defaultCenter, onLocationSelected }) => {
         gestureHandling="greedy"
         disableDefaultUI={true}
         keyboardShortcuts={false}
-        mapId={REACT_APP_GOOGLE_MAPS_MAPID}
+        mapId={import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_MAPID}
       >
         <AdvancedMarker
           position={markerPosition}

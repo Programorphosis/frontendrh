@@ -1,17 +1,16 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import markerBackgroundIcon from "../../../static/marker-bgd-03.svg";
-import centerMapIcon from "../../../static/centerLocatio.svg";
+
 import { Map, MapControl, useMap } from "@vis.gl/react-google-maps";
 import { geoLocationContext } from "../../../context/geoLocationContext";
-import Loading from "../alerts/Loading";
-import { REACT_APP_GOOGLE_MAPS_MAPID } from "../../../../env";
+
+
 import MapHandler from "./autocomplete/MapHandler";
 import { PoiMarkers } from "./customs/PoiMarkers";
-import { use } from "react";
+
 
 const Maps = ({ onClose, hotels, selectedHotelSearching, setFilters }) => {
   console.log(hotels[0]);
-  const mapId = REACT_APP_GOOGLE_MAPS_MAPID;
+  const mapId = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_MAPID;
   const map = useMap();
   const { isLoading, userLocation, mainLocations, defaultCenter } =
     useContext(geoLocationContext);

@@ -3,12 +3,12 @@ import markerBackgroundIcon from "../../../static/marker-bgd-03.svg";
 import { Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 import { geoLocationContext } from "../../../context/geoLocationContext";
 import Loading from "../alerts/Loading";
-import { REACT_APP_GOOGLE_MAPS_MAPID } from "../../../../env";
+
 import { loginContext } from "../../../context/loginContext";
 
 
 const StaticMap = ({ onClose, choords, name='' }) => {
-  const mapId = REACT_APP_GOOGLE_MAPS_MAPID;
+  const mapId = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_MAPID;
   const { isLoading, } = useContext(geoLocationContext);
   const {handleShowMapContainer} = useContext(loginContext);
 
