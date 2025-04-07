@@ -177,14 +177,14 @@ export default function App() {
         {/* Botón para alternar el modo oscuro */}
         <NavbarItem>
           <Switch
-          isSelected={isDark} onValueChange={() => setIsDark(!isDark)}
-            defaultSelected ={isDark}
+            isSelected={isDark}
+            onValueChange={() => setIsDark(!isDark)}
+            defaultSelected={isDark}
             color="warning"
             endContent={<MoonIcon />}
             size="lg"
             startContent={<SunIcon />}
-          >
-          </Switch>
+          ></Switch>
         </NavbarItem>
 
         <Dropdown placement="bottom-end">
@@ -201,7 +201,7 @@ export default function App() {
           </DropdownTrigger>
           <DropdownMenu aria-label="Opciones de perfil" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">{user ? 'Hola!': 'inicia ses'}</p>
+              <p className="font-semibold">{user ? "Hola!" : "inicia ses"}</p>
               <p className="font-semibold">
                 {user?.email || "usuario@example.com"}
               </p>
@@ -210,12 +210,14 @@ export default function App() {
               <Link to="/profile">Mi cuenta</Link>
             </DropdownItem>
             <DropdownItem key="bookings">Mis Reservas</DropdownItem>
-            <DropdownItem key="analytics">Estadísticas</DropdownItem>
+            <DropdownItem key="analytics">
+              <Link to='/hoteles/post'>Anunciar propiedad</Link>
+            </DropdownItem>
             <DropdownItem key="help_and_feedback">
               <span>Ayuda y Feedback</span>
             </DropdownItem>
             <DropdownItem key="logout" color="danger">
-             {isLogin ? (
+              {isLogin ? (
                 <button
                   onClick={() => {
                     closeSession();
