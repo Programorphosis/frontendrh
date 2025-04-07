@@ -10,7 +10,7 @@ import { APIProvider } from "@vis.gl/react-google-maps";
 
 
 import ProviderLocatiom from "./context/GeoLocationContextProvider.jsx";
-const apiKey = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY;
+const apiKey = 'AIzaSyAktQbJjjc9jr3FtxzSiMUdOpYViDQUGks';
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HeroUIProvider>

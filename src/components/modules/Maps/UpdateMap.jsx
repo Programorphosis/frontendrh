@@ -35,7 +35,7 @@ const HotelLocationMap = ({ defaultCenter, onLocationSelected }) => {
         gestureHandling="greedy"
         disableDefaultUI={true}
         keyboardShortcuts={false}
-        mapId={import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_MAPID}
+        mapId={"82475a552b5a83d4"}
       >
         <AdvancedMarker
           position={markerPosition}

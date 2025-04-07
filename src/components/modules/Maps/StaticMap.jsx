@@ -8,7 +8,7 @@ import { loginContext } from "../../../context/loginContext";
 
 
 const StaticMap = ({ onClose, choords, name='' }) => {
-  const mapId = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_MAPID;
+  const mapId = "82475a552b5a83d4";
   const { isLoading, } = useContext(geoLocationContext);
   const {handleShowMapContainer} = useContext(loginContext);
 

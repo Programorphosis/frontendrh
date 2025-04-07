@@ -10,7 +10,7 @@ import { PoiMarkers } from "./customs/PoiMarkers";
 
 const Maps = ({ onClose, hotels, selectedHotelSearching, setFilters }) => {
   console.log(hotels[0]);
-  const mapId = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_MAPID;
+  const mapId = "82475a552b5a83d4";
   const map = useMap();
   const { isLoading, userLocation, mainLocations, defaultCenter } =
     useContext(geoLocationContext);

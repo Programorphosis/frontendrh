@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { staticHotels, staticRoomTypes, staticImgUser, staticServices, staticServicesIcons } from "../context/StaticData.js"; // Ajusta la ruta
 
 const GlobalContextProvider = ({ children }) => {
-  const URLStatic = import.meta.env.VITE_BACKEND_URL;
+  const URLStatic = 'https://backendrh-production.up.railway.app'
   console.log("URLStatic", URLStatic);
   const useStaticData = false; // Puedes definir esta variable en .env
 
