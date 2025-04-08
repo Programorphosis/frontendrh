@@ -221,7 +221,6 @@ export default function App() {
                 <button
                   onClick={() => {
                     closeSession();
-                    handleSetShowAlert(true, "Sesión cerrada", "success");
                   }}
                 >
                   Cerrar sesión

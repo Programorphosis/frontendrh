@@ -40,8 +40,9 @@ const HotelCard = ({ hotel }) => {
     removeFromFavorites,
     isFavorite,
     showAlertLogUp,
+    setShowAlertLogUp,
     handleSetFavouriteClick,
-    handleSetShowAlert,
+    setShowAlert,
     filters,
   } = useContext(loginContext);
   //complicandome la vida xd
@@ -59,7 +60,7 @@ const HotelCard = ({ hotel }) => {
       <Link
         to={`/hoteles/${id}`}
         onClick={() => {
-          handleSetShowAlert(false);
+          setShowAlertLogUp(false);
           scrollTo(0, 0);
         }}
         className="w-full h-full"
@@ -92,7 +93,7 @@ const HotelCard = ({ hotel }) => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      !isLogin && handleSetShowAlert(true)
+                      !isLogin && setShowAlertLogUp(true)
                        
                      
                       e.preventDefault(); // Previene la navegación del Link
@@ -165,7 +166,7 @@ const HotelCard = ({ hotel }) => {
       </Link>
       {showAlertLogUp && (
         <AlertLogUp
-          onClose={() => handleSetShowAlert(false)}
+          onClose={() => setShowAlertLogUp(false)}
         />
       )}
      

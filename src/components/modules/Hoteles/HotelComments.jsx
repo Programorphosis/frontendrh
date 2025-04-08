@@ -175,7 +175,7 @@ const ReviewsCard = ({ hotel }) => {
   };
   return (
     <div className="bg-background rounded-xl shadow p-6">
-      {showAlertLogUp && <AlertLogUp onClose={handleShowAlertLogUp} />}
+      
       {error && <AlertStandar onClose={() => setError(null)} {...error} />}
 
       {/* Sección de calificación promedio */}
