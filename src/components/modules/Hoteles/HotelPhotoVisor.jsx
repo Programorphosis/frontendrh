@@ -26,23 +26,23 @@ const HotelPhotoVisor = ({ images }) => {
         {/* Imagen grande */}
         <div className="w-2/3">
           <img
-            src={images[0].url}
+            src={images?.[0].url}
             alt="Imagen principal"
             className="w-full h-full object-cover aspect-video "
           />
         </div>
         {/* Contenedor de las dos imágenes pequeñas */}
         <div className="w-1/3 flex flex-col gap-2">
-          {images[1] && (
+          {images?.[1] && (
             <img
-              src={images[1].url}
+              src={images?.[1].url}
               alt="Imagen secundaria 1"
               className="w-full h-full object-cover aspect-video "
             />
           )}
-          {images[2] && (
+          {images?.[2] && (
             <img
-              src={images[2].url}
+              src={images?.[2].url}
               alt="Imagen secundaria 2"
               className="w-full h-full object-cover aspect-video "
             />
@@ -55,37 +55,37 @@ const HotelPhotoVisor = ({ images }) => {
         {/* Imagen grande */}
         <div className="w-1/2">
           <img
-            src={images[0].url}
+            src={images?.[0].url}
             alt="Imagen principal"
             className="w-full h-full object-cover aspect-video "
           />
         </div>
         {/* Grilla para las 4 imágenes pequeñas */}
         <div className="w-1/2 grid grid-cols-2 grid-rows-2 gap-2">
-          {images[1] && (
+          {images?.[1] && (
             <img
-              src={images[1].url}
+              src={images?.[1].url}
               alt="Imagen secundaria 1"
               className="w-full h-full object-cover aspect-video "
             />
           )}
-          {images[2] && (
+          {images?.[2] && (
             <img
-              src={images[2].url}
+              src={images?.[2].url}
               alt="Imagen secundaria 2"
               className="w-full h-full object-cover aspect-video "
             />
           )}
-          {images[3] && (
+          {images?.[3] && (
             <img
-              src={images[3].url}
+              src={images?.[3].url}
               alt="Imagen secundaria 3"
               className="w-full h-full object-cover aspect-video "
             />
           )}
-          {images[4] && (
+          {images?.[4] && (
             <img
-              src={images[4].url}
+              src={images?.[4].url}
               alt="Imagen secundaria 4"
               className="w-full h-full object-cover aspect-video "
             />
