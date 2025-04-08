@@ -40,6 +40,8 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
     images.forEach(({ file }) => formData.append("image", file));
 
     try {
+
+      
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -55,7 +57,7 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
 
       console.log("Response:", response);
       setImages([]); // Limpiar las imágenes después de enviarlas
-      navigate("/home"); // Redirigir a la página de inicio
+      navigate("/"); // Redirigir a la página de inicio
     } catch (error) {
       console.error("Error:", error);
       setErr(error.response?.data?.message || "Error al enviar las imágenes.");
@@ -64,7 +66,7 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
 
   return (
     <div className="h-full w-full grid place-content-center bg-white min-h-screen ">
-      <img src="https://img-aw-hoteles.s3.us-east-2.amazonaws.com/1stock-photo-woman-s-hand-holda-plate-of-instant-buckwheat-with-a-mountain-as-a-backdrop-the-concept-of-1028923954.jpg" alt="imagen" />
+    
       <div className="w-full min-h-screen border border-green-400">
         <h1 className="text-4xl text-center mb-2 font-extrabold">
           <span className="text-blue-400">Imágenes </span>de tu propiedad
