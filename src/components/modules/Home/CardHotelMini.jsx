@@ -43,7 +43,7 @@ const HotelCard = ({ hotel }) => {
       ? current.price * (1 - current.discount / 100) 
       : current.price;
     return currentFinal < prevFinal ? current : prev;
-  }, rooms[0]);
+  }, rooms?.[0]);
 
   const finalPrice =
     cheapestRoom.discount && cheapestRoom.discount > 0
@@ -76,7 +76,7 @@ const HotelCard = ({ hotel }) => {
             <button className="w-full h-full">
               <img
                 className="w-full h-full object-cover aspect-video rounded-bl-md rounded-tl-md"
-                src={`${images[0]?.url}`}
+                src={`${images?.[0]?.url}`}
                 alt={`${name} - Imagen`}
               />
             </button>
