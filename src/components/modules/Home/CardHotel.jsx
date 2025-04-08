@@ -49,8 +49,8 @@ const HotelCard = ({ hotel }) => {
   useEffect(() => {
     let rrrooommmsss = rooms.map((room) => room.discount);
     let res = rrrooommmsss.filter((acc, curr) => acc > curr, 0);
-    console.log("res", res[0]);
-    setHaveDiscount(res[0]);
+    console.log("res", res?.[0]);
+    setHaveDiscount(res?.[0]);
   }, [hotel]);
   //
   return (
