@@ -49,7 +49,6 @@ const HotelCard = ({ hotel }) => {
   useEffect(() => {
     let rrrooommmsss = rooms.map((room) => room.discount);
     let res = rrrooommmsss.filter((acc, curr) => acc > curr, 0);
-    console.log("res", res?.[0]);
     setHaveDiscount(res?.[0]);
   }, [hotel]);
   //
@@ -78,7 +77,7 @@ const HotelCard = ({ hotel }) => {
             <button className="w-full h-full">
               <img
                 className="w-full h-full object-cover aspect-video rounded-bl-md rounded-tl-md"
-                src={`${images[0]?.url}`}
+                src={`${images?[0]?.url}`}
                 alt={`${name} - Imagen`}
               />
             </button>
