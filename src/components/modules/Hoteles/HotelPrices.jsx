@@ -305,7 +305,8 @@ const HotelPrices = ({ hotel }) => {
       </div>
       {/* Listado de habitaciones filtradas */}
       <div className="flex flex-wrap">
-        {filteredRooms.map((room) => (
+        {filteredRooms.length ? (filteredRooms.map((room) => 
+        (
           <div
             key={room.room_type.name}
             className="w-full sm:w-1/2 lg:w-1/3 px-2 mb-8"
@@ -318,7 +319,12 @@ const HotelPrices = ({ hotel }) => {
               handleBooking={() => {}}
             />
           </div>
-        ))}
+        ))) : (
+          <div className="w-full text-center text-text-secondary mt-4">
+            No hay habitaciones disponibles según los criterios seleccionados.
+          </div>
+        )} 
+      
       </div>
       <div className="p-2 text-text-secondary flex flex-col justify-center items-center mb-10">
         <div className="text-4xl text-center max-sm:text-text-alt font-semibold my-2">

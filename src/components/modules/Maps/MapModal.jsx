@@ -45,7 +45,7 @@ const MapModal = ({ onClose, hotel }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-full z-50 bg-black bg-opacity-50 flex justify-center items-center ">
       <div className="h-full  w-full max-w-screen-md sm:max-h-[700px] sm:mx-8 z-50  bg-backgroundAlt mb-10 rounded-2xl overflow-hidden  ">
-        <div>
+        <div className="absolute top-4 right-4 z-50">
             <ButtonClose onClose={onClose} />
         </div>
         <Map

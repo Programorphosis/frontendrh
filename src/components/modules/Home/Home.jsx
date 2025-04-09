@@ -17,8 +17,7 @@ import FilterChips from "./FilterChips";
 import SearchBooking from "../forms/Booking/SearchBooking";
 import { capitalizeWords, normalize } from "../../../helpers";
 import { reservationsContext } from "../../../context/reservationsContext";
-import { Slider } from "@heroui/react";
-
+import { Slider, Pagination, Button } from "@heroui/react";
 
 const Home = () => {
   const {
@@ -28,6 +27,9 @@ const Home = () => {
     handleShowMapContainer,
     filters,
     setFilters,
+    page,
+    setPage,
+    totalPages,
   } = useContext(loginContext);
   const { newReservationData } = useContext(reservationsContext);
   const formatter = useDateFormatter({ dateStyle: "long" });
@@ -37,11 +39,20 @@ const Home = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [toogleSearchBooking, setToogleSearchBooking] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
-
   const [selectedHotelSearch, setSelectedHotelSearch] = useState(null);
 
-  //FILTROS
-  console.log("mainLocations", mainLocations);
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
+
+  const goToPreviousPage = () => {
+    setPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
+  };
+
+  const goToNextPage = () => {
+    setPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : prevPage));
+  };
+
   //SORTBY
   const [sortBy, setSortBy] = useState("default");
   const [sortTypeAsc, setSortTypeAsc] = useState(false);
@@ -383,20 +394,22 @@ const Home = () => {
               className={`pageContentHead flex max-md:justify-center justify-between items-center w-full max-w-5xl mx-auto mt-2`}
             >
               {/* BOTON DE ORDENAR */}
-              <button className={`w-2/6 flex justify-center border-2 border-secondary rounded-xl hover:bg-primary hover:text-white transition-custom overflow-hidden max-md:hidden`}>
+              <button
+                className={`w-2/6 flex justify-center border-2 border-secondary rounded-xl hover:bg-primary hover:text-white transition-custom overflow-hidden max-md:hidden`}
+              >
                 <span className="flex align-middle w-full h-9">
                   <div className="flex items-center w-full h-full ">
                     <select
                       name="sortBy"
                       id="sorting-selector"
-                      className={` text-base font-light h-full text-center w-full bg-background text-text-secondary ${!sortBy != 'default'? '': 'rounded-l-xl'}  focus:outline-none focus:ring-0 focus:ring-primary border-transparent appearance-none`}
+                      className={` text-base font-light h-full text-center w-full bg-background text-text-secondary ${
+                        !sortBy != "default" ? "" : "rounded-l-xl"
+                      }  focus:outline-none focus:ring-0 focus:ring-primary border-transparent appearance-none`}
                       value={sortBy}
                       onChange={handleSortChange}
                       style={{ backgroundImage: "none" }}
                     >
-                      <option value="default">
-                        Ordenar resultados por :
-                      </option>
+                      <option value="default">Ordenar resultados por :</option>
                       <option value="price">Ordenado por precio</option>
                       <option value="rating">Ordenado por puntuacion</option>
                       <option value="capacity">Ordenado por capacidad</option>
@@ -448,7 +461,11 @@ const Home = () => {
                         handleShowMapContainer(true);
                       }}
                     >
-                      <img src={locationIcon} alt="" className="h-4 mr-2 text-text-primary" />
+                      <img
+                        src={locationIcon}
+                        alt=""
+                        className="h-4 mr-2 text-text-primary"
+                      />
                       Ver mapa
                     </span>
                   </div>
@@ -1224,6 +1241,32 @@ const Home = () => {
             )}
           </ol>
         </div>
+          <div className="flex flex-col gap-5 mt-4">
+            <Pagination
+              color="secondary"
+              page={page}
+              total={totalPages}
+              onChange={handlePageChange}
+            />
+            <div className="flex gap-2">
+              <Button
+                color="secondary"
+                size="sm"
+                variant="flat"
+                onPress={goToPreviousPage}
+              >
+                Previous
+              </Button>
+              <Button
+                color="secondary"
+                size="sm"
+                variant="flat"
+                onPress={goToNextPage}
+              >
+                Next
+              </Button>
+            </div>
+          </div>
       </div>
     </div>
   );
