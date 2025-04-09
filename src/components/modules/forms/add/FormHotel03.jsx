@@ -40,6 +40,8 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
     images.forEach(({ file }) => formData.append("image", file));
 
     try {
+
+      
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -63,8 +65,10 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
   };
 
   return (
+
     <div className="h-full w-full grid place-content-center bg-background min-h-screen ">
       <div className="w-full min-h-screen ">
+
         <h1 className="text-4xl text-center mb-2 font-extrabold">
           <span className="text-blue-400">Imágenes </span>de tu propiedad
           <span className="text-blue-400">...</span>
