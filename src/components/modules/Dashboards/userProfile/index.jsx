@@ -11,9 +11,11 @@ import { capitalizeWords } from "../../../../helpers";
 import { data } from "autoprefixer";
 import {Avatar} from "@heroui/react";
 import { Link } from "react-router-dom";
+import ProfilePictureModal from "../../forms/ProfilePictureModal";
 const Dashboard = () => {
   const { URLStatic, user, token, imgUser, closeSession } = useContext(loginContext);
   const [dataUser, setDataUser] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchDataUser = async () => {
@@ -40,7 +42,7 @@ const Dashboard = () => {
     };
     fetchDataUser();
   }, [user, token, URLStatic]);
-
+console.log('imguse', imgUser)
   const [showInfoContainer, setShowInfoContainer] = useState(false);
   const [currentSection, setCurrentSection] = useState("profile");
 console.log(dataUser);
@@ -56,9 +58,9 @@ console.log(dataUser);
               >
                 <h2 className="sr-only">Información de la cuenta</h2>
                 <div className="flex flex-col">
-                <Avatar size="lg" src={imgUser} />
+                <Avatar size="lg" src={imgUser} onClick={() => setModalIsOpen(true)} />
                   <div className="mb-4">
-                    <div className="text-3xl font-bold text-text-primary">
+                    <div className="text-3xl font-bold text-primary">
                       {capitalizeWords(dataUser?.name + ' ' + dataUser?.lastname) || "Nombre de usuario"}
                     </div>
                     <div className="text-sm text-text-secondary break-words">
@@ -71,7 +73,7 @@ console.log(dataUser);
                       aria-label="Ver actividad de recompensas"
                       className="flex items-center gap-4"
                     >
-                      <Link to={'/hoteles'} ><span className="text-sm text-primary flex-grow font-bold">
+                      <Link to={'/hoteles'} ><span className="text-sm text-text-primary flex-grow font-bold">
                         Buscar hoteles
                       </span></Link>
                       <svg
@@ -89,7 +91,7 @@ console.log(dataUser);
           </div>
 
           <div className="flex w-full">
-            <section className="w-full lg:w-1/3 bg-backgroundAlt lg:p-6">
+            <section className="w-full lg:w-1/3 bg-background lg:p-6">
               <div className="text-sm text-text-primary mb-4 p-2">
                 <h1 className="text-2xl font-semibold mb-4">
                   Configuración de la cuenta
@@ -487,7 +489,12 @@ console.log(dataUser);
             </section>
           </div>
         </div>
-
+   <ProfilePictureModal
+             isOpen={modalIsOpen}
+             onClose={() => setModalIsOpen(false)}
+             onUpload={() => setModalIsOpen(false)}
+            
+           />
         <div id="mobile-verification-container">
           <div id="universal-profile-mobile-verification"></div>
         </div>

@@ -47,12 +47,13 @@ const PlaceAutocompleteClassic = ({ onPlaceSelect }) => {
   };
 
   return (
-    <div className="autocomplete-container flex justify-center w-full h-full rounded-full">
+    <div className="autocomplete-container flex justify-center w-full h-full">
       <input
         id="autocomplete-input"
         ref={inputRef}
-        className="w-full h-full px-4 text-lg outline-none rounded-full"
+        className="w-full h-full px-4 text-lg outline-none "
         onKeyDown={handleKeyDown}
+        placeholder="Buscar lugares..."
       />
     </div>
   );

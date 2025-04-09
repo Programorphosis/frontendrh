@@ -131,6 +131,15 @@ export default function App() {
     }
   }, [isDark]);
 
+  const handleChangeSearchFilter = (e) => {
+    const value = e.target.value;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+
+      searchTerm: value,
+    }));
+  }
+
   return (
     <Navbar isBordered className="z-10">
       <NavbarContent justify="start">
@@ -172,6 +181,7 @@ export default function App() {
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
+          onChange={handleChangeSearchFilter}
         />
 
         {/* Botón para alternar el modo oscuro */}
@@ -196,7 +206,7 @@ export default function App() {
               color="secondary"
               name="{user?.name || 'Usuario'}"
               size="sm"
-              src={imgUser || "https://i.pravatar.cc/150?u=a042581f4e29026704d"}
+              src={imgUser || HotelLogo}
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Opciones de perfil" variant="flat">

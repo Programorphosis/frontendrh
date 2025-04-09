@@ -39,19 +39,16 @@ const ProfileComponent = ({ dataUser, user }) => {
   return (
     <div
       role="main"
-      className=" bg-white max-h-screen  overflow-y-scroll scrollbar-hide  pb-12"
+      className=" bg-background max-h-screen  overflow-y-scroll scrollbar-hide  pb-12"
     >
-      {/* Profile Heading */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold">{capitalizeWords(fullName)}</h1>
-      </div>
+  
 
       {/* Información Básica */}
       <div className="mb-12">
         <div className="flex items-start justify-between">
           <div>
-            <h2 className="text-xl font-semibold">Información básica</h2>
-            <p className="mt-2 text-xs text-gray-600">
+            <h2 className="text-3xl font-semibold">Información básica</h2>
+            <p className="mt-2 text-xs text-text-primary">
               La información ingresada debe coincidir con la del documento de
               identidad que uses para viajar.
             </p>
@@ -66,7 +63,7 @@ const ProfileComponent = ({ dataUser, user }) => {
           </button>
 
           {showUpdateForm && (
-            <div className="absolute top-0 left-0 w-full h-screen bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="absolute top-0 left-0 w-full h-screen bg-background bg-opacity-50 flex items-center justify-center z-50">
               <UpdateFormUser
                 onClose={handleShowUpdateForm}
                 dataUser={dataUser}
@@ -74,49 +71,49 @@ const ProfileComponent = ({ dataUser, user }) => {
             </div>
           )}
         </div>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-1 font-semibold">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-1">
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">Nombre</h3>
-            <p className="text-[0.8rem] text-gray-700">
+            <h3 className="text-sm font-semibold">Nombre</h3>
+            <p className="text-[0.8rem] text-text-secondary">
               {capitalizeWords(fullName)}
             </p>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">Biografía</h3>
-            <p className="text-[0.8rem] text-gray-700">Sin especificar</p>
+            <h3 className="text-sm font-semibold">Biografía</h3>
+            <p className="text-[0.8rem] text-text-secondary">Sin especificar</p>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">Fecha de nacimiento</h3>
-            <p className="text-[0.8rem] text-gray-700">Sin información</p>
+            <h3 className="text-sm font-semibold">Fecha de nacimiento</h3>
+            <p className="text-[0.8rem] text-text-secondary">Sin información</p>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">Género</h3>
-            <p className="text-[0.8rem] text-gray-700">Sin información</p>
+            <h3 className="text-sm font-semibold">Género</h3>
+            <p className="text-[0.8rem] text-text-secondary">Sin información</p>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">
+            <h3 className="text-sm font-semibold">
               Necesidades de acceso especial
             </h3>
-            <p className="text-[0.8rem] text-gray-700">Sin información</p>
+            <p className="text-[0.8rem] text-text-secondary">Sin información</p>
           </div>
           {/* Datos adicionales inyectados desde AccountDetails */}
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">Username</h3>
-            <p className="text-[0.8rem] text-gray-700">{username}</p>
+            <h3 className="text-sm font-semibold">Username</h3>
+            <p className="text-[0.8rem] text-text-secondary">{username}</p>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">Fecha de Creación</h3>
-            <p className="text-[0.8rem] text-gray-700">
+            <h3 className="text-sm font-semibold">Fecha de Creación</h3>
+            <p className="text-[0.8rem] text-text-secondary">
               {formatter.format(createdDate)}
             </p>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">Verificado</h3>
-            <p className="text-[0.8rem] text-gray-700">{verify}</p>
+            <h3 className="text-sm font-semibold">Verificado</h3>
+            <p className="text-[0.8rem] text-text-secondary">{verify}</p>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-sm font-medium">Tipo de Usuario</h3>
-            <p className="text-[0.8rem] text-gray-700">{usertype}</p>
+            <h3 className="text-sm font-semibold">Tipo de Usuario</h3>
+            <p className="text-[0.8rem] text-text-secondary">{usertype}</p>
           </div>
         </div>
       </div>
@@ -125,8 +122,8 @@ const ProfileComponent = ({ dataUser, user }) => {
       <div>
         <div className="flex items-start justify-between">
           <div>
-            <h2 className="text-xl font-semibold">Información de contacto</h2>
-            <p className="mt-2 text-xs text-gray-600">
+            <h2 className="text-3xl font-semibold">Información de contacto</h2>
+            <p className="mt-2 text-xs text-text-primary">
               Bríndanos esta información para recibir alertas sobre la actividad
               de la cuenta y novedades.
             </p>
@@ -140,7 +137,7 @@ const ProfileComponent = ({ dataUser, user }) => {
             Editar
           </button>
           {showUpdateForm2 && (
-            <div className="absolute top-0 left-0 w-full h-screen bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+            <div className="absolute top-0 left-0 w-full h-screen bg-background bg-opacity-50 flex items-center justify-center z-50">
               <UpdateFormUserdirections
                 onClose={handleShowUpdateForm2}
                 dataUser={dataUser}
@@ -151,23 +148,23 @@ const ProfileComponent = ({ dataUser, user }) => {
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-1">
           <div className="flex flex-col">
             <h3 className="text-sm font-semibold">Número de celular</h3>
-            <p className="text-[0.8rem] text-gray-700">{telefono}</p>
+            <p className="text-[0.8rem] text-text-secondary">{telefono}</p>
           </div>
           <div className="flex flex-col">
             <h3 className="text-sm font-semibold">Correo electrónico</h3>
-            <p className="text-[0.8rem] text-gray-700">{email}</p>
+            <p className="text-[0.8rem] text-text-secondary">{email}</p>
           </div>
           <div className="flex flex-col">
             <h3 className="text-sm font-semibold">Segundo Teléfono</h3>
-            <p className="text-[0.8rem] text-gray-700">{segundoTelefono}</p>
+            <p className="text-[0.8rem] text-text-secondary">{segundoTelefono}</p>
           </div>
           <div className="flex flex-col">
             <h3 className="text-sm font-semibold">Contacto de emergencia</h3>
-            <p className="text-[0.8rem] text-gray-700">Sin información</p>
+            <p className="text-[0.8rem] text-text-secondary">Sin información</p>
           </div>
           <div className="flex flex-col">
             <h3 className="text-sm font-semibold">Dirección</h3>
-            <p className="text-[0.8rem] text-gray-700">Sin información</p>
+            <p className="text-[0.8rem] text-text-secondary">Sin información</p>
           </div>
         </div>
       </div>

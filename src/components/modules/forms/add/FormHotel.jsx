@@ -29,24 +29,24 @@ useEffect(() => {
 
   console.log(capturedChoords);
   return (
-    <div className=" flex flex-col items-center w-full  h-full py-16 bg-white ">
+    <div className=" flex flex-col items-center w-full  h-full py-16 bg-background ">
       <h1 className="text-4xl text-center font-bold mb-6">
-        ¿<span className="text-secondary">Dónde</span> está ubicada tu
+        ¿<span className="text-primary">Dónde</span> está ubicada tu
         propiedad?
       </h1>
-      <span className="text-lg text-primary font-normal mb-16 text-center w-11/12 max-w-[600px]">
+      <span className="text-medium text-text-secondary font-normal mb-16 text-center w-11/12 max-w-[600px]">
         Indica la ubicación exacta de tu propiedad para que clientes puedan
         encontrarte de forma rápida y precisa.
       </span>
 
-      <div className=" h-auto  w-11/12 max-w-[500px] mb-8 flex justify-between rounded-lg bg-secondary">
+      <div className=" h-auto  w-11/12 max-w-[500px] mb-8 flex justify-between rounded-lg bg-primary">
         <img className="w-1/12 h-5 mx-2 my-auto " src={searchIconw} alt="" />
         {/* <input
           type="search"
           placeholder="Ej: Caserio El Porvenir, Rubiales"
           className=" border-r-2 w-full  outline-none text-xl"
         /> */}
-        <div className="w-10/12 h-12 bg-white">
+        <div className="w-10/12 h-12 bg-background">
           <AutocompleteClassic onPlaceSelect={setSelectedPlace} />
         </div>
 
@@ -91,9 +91,9 @@ useEffect(() => {
       </span>
       <div className="w-full flex justify-center">
         <button
-          className={`border-2 max-w-[500px] mt-12 flex justify-center items-center rounded-xl w-11/12 h-12 ${
-            capturedChoords ? "bg-primary" : "bg-blue-200"
-          } text-white font-semibold`}
+          className={` max-w-[500px] mt-12 flex justify-center items-center rounded-xl w-11/12 h-12 ${
+            capturedChoords ? "bg-primary" : "bg-secondary"
+          } text-text-primary font-semibold`}
           onClick={() => {
             console.log('click');
            

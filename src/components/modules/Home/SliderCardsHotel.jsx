@@ -131,12 +131,7 @@ const HotelList = (hotel) => {
         }}
       ></div>
 
-      <div className="p-2 text-text-alt flex flex-col justify-center items-center mb-10">
-        <div className="text-4xl text-center max-sm:text-text-alt font-semibold my-2">
-          Buscabas algo más?
-        </div>
-        <span className="text-accent">Encuentra opciones similares con el mejor precio del lugar</span>
-      </div>
+     
       <ol className="w-full flex flex-row space-x-3 px-7 overflow-x-auto ">
         {isLoadingHotels ? (
           <SkeletonCardHotel />

@@ -15,7 +15,7 @@ import publishIcon from "../../../static/publishIcon-12.svg";
 import reservedIcon from "../../../static/ReservasIcon-13.svg";
 import subsIcon from "../../../static/MembershipIcon-11.svg";
 import userIcon from "../../../static/userIconBold-06.svg";
-import 'react-loading-skeleton/dist/skeleton.css';
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Dashboard = () => {
   const { URLStatic, user, token, imgUser } = useContext(loginContext);
@@ -32,11 +32,6 @@ const Dashboard = () => {
   const [showReservations, setShowReservations] = useState(false);
   const [showSubscriptions, setShowSubscriptions] = useState(false);
   const [showVerifyAlert, setShowVerifyAlert] = useState(false);
-
-
-
-
-
 
   useEffect(() => {
     const fetchDataUser = async () => {
@@ -72,15 +67,13 @@ const Dashboard = () => {
             Authorization: token,
           },
         };
-        
+
         const propiedades = await axios.get(
           `${URLStatic}/user/hoteles/propietario_id/${user.user_id}`,
           config
         );
-       
-        if (propiedades.data.body?.length > 0) {
 
-          
+        if (propiedades.data.body?.length > 0) {
           setDataOwner(propiedades.data.body);
         }
       } catch (error) {
@@ -107,36 +100,43 @@ const Dashboard = () => {
     }, 100);
     setShowReservations(false);
     setShowSubscriptions(false);
-
   };
 
   const handleShowReservations = () => {
     setShowReservations(!showReservations);
     setShowOwner(false);
     setShowSubscriptions(false);
-  }
+  };
   const handleShowSubscriptions = () => {
     setShowSubscriptions(!showSubscriptions);
     setShowOwner(false);
     setShowReservations(false);
-  }
-console.log('showMenuToggle', showMobileMenu)
+  };
+  console.log("showMenuToggle", showMobileMenu);
   return (
     <div className="flex overflow-hidden  h-auto">
       {/* Sidebar para desktop */}
       <aside className="w-64 bg-white shadow-md hidden md:flex flex-col">
         <div className="p-6 border-b bg-secondary text-white">
           <div className="flex items-center space-x-4">
-          <div className="w-14 h-14 rounded-full overflow-hidden" onClick={() => setModalIsOpen(true)}>
-                <img
-                  className="container w-full h-full object-cover"
-                  src={imgUser ? imgUser : userIcon}
-                  alt="Perfil"
-                />
-               </div>
+            <div
+              className="w-14 h-14 rounded-full overflow-hidden"
+              onClick={() => setModalIsOpen(true)}
+            >
+              <img
+                className="container w-full h-full object-cover"
+                src={imgUser ? imgUser : userIcon}
+                alt="Perfil"
+              />
+            </div>
             <div>
               <h2 className="text-lg font-bold text-accent">
-                {dataUser ? String(dataUser.name).charAt(0).toUpperCase()+String(dataUser.name).slice(1) : <Skeleton width={80} />}
+                {dataUser ? (
+                  String(dataUser.name).charAt(0).toUpperCase() +
+                  String(dataUser.name).slice(1)
+                ) : (
+                  <Skeleton width={80} />
+                )}
               </h2>
               <p className="text-sm text-background">
                 @{user.username || <Skeleton width={50} />}
@@ -154,7 +154,10 @@ console.log('showMenuToggle', showMobileMenu)
           </Link>
           <button
             onClick={ownerHandleShow}
-            className={`w-full flex items-center p-2 my-2 text-gray-600 hover:bg-secondary hover:text-white rounded-md transition-colors ${showOwner ? "bg-secondary text-white" : ""}`}>
+            className={`w-full flex items-center p-2 my-2 text-gray-600 hover:bg-secondary hover:text-white rounded-md transition-colors ${
+              showOwner ? "bg-secondary text-white" : ""
+            }`}
+          >
             <img
               src={propertyIcon}
               alt="Mis propiedades"
@@ -169,11 +172,21 @@ console.log('showMenuToggle', showMobileMenu)
             <img src={publishIcon} alt="Publicar" className="w-5 h-5 mr-3" />
             <span>Publicar</span>
           </Link>
-          <button className={`w-full  flex items-center p-2 my-2 text-gray-600 hover:bg-secondary hover:text-white rounded-md transition-colors  ${showReservations ? "bg-secondary text-white" : ""}`} onClick={handleShowReservations}>
+          <button
+            className={`w-full  flex items-center p-2 my-2 text-gray-600 hover:bg-secondary hover:text-white rounded-md transition-colors  ${
+              showReservations ? "bg-secondary text-white" : ""
+            }`}
+            onClick={handleShowReservations}
+          >
             <img src={reservedIcon} alt="Reservas" className="w-5 h-5 mr-3" />
             <span>Reservas</span>
           </button>
-          <button className={`w-full  flex items-center p-2 my-2 text-gray-600 hover:bg-secondary hover:text-white rounded-md transition-colors ${showSubscriptions ? "bg-secondary text-white" : ""}`} onClick={handleShowSubscriptions}>
+          <button
+            className={`w-full  flex items-center p-2 my-2 text-gray-600 hover:bg-secondary hover:text-white rounded-md transition-colors ${
+              showSubscriptions ? "bg-secondary text-white" : ""
+            }`}
+            onClick={handleShowSubscriptions}
+          >
             <img src={subsIcon} alt="Suscripciones" className="w-5 h-5 mr-3" />
             <span>Suscripciones</span>
           </button>
@@ -182,18 +195,21 @@ console.log('showMenuToggle', showMobileMenu)
 
       {/* Menú lateral para mobile */}
       {showMobileMenu && (
-        <div className={`md:hidden fixed inset-0 z-50 flex  ${showMobileMenu ? "animate-slideIn" : "animate-slideOut"} transition-transform duration-300`}>
-    
+        <div
+          className={`md:hidden fixed inset-0 z-50 flex  ${
+            showMobileMenu ? "animate-slideIn" : "animate-slideOut"
+          } transition-transform duration-300`}
+        >
           <div className="w-64 bg-white shadow-md">
             <div className="p-4 border-b flex justify-between items-start bg-primary text-white">
-              <div className="flex items-start space-x-4 "> 
-               <div className="w-14 h-14 rounded-full overflow-hidden">
-                <img
-                  className="container w-full h-full object-cover"
-                  src={imgUser ? imgUser : userIcon}
-                  alt="Perfil"
-                />
-               </div>
+              <div className="flex items-start space-x-4 ">
+                <div className="w-14 h-14 rounded-full overflow-hidden">
+                  <img
+                    className="container w-full h-full object-cover"
+                    src={imgUser ? imgUser : userIcon}
+                    alt="Perfil"
+                  />
+                </div>
                 <div>
                   <h2 className="text-lg font-bold text-accent">
                     {dataUser ? dataUser.name : <Skeleton width={80} />}
@@ -205,8 +221,7 @@ console.log('showMenuToggle', showMobileMenu)
               </div>
               <button
                 onClick={() => {
-                  
-                  setShowMobileMenu(false)
+                  setShowMobileMenu(false);
                 }}
                 className="w-7 h-7 text-backgound border-2 border-background rounded-xl flex items-center justify-center"
               >
@@ -238,9 +253,10 @@ console.log('showMenuToggle', showMobileMenu)
               </button>
               <Link
                 to="/hoteles/post"
-                onClick={() => {setShowMobileMenu(false)
-                  setShowMobileMenu(false);}
-                }
+                onClick={() => {
+                  setShowMobileMenu(false);
+                  setShowMobileMenu(false);
+                }}
                 className="flex items-center p-2 my-2 text-text-secondary hover:bg-primary hover:text-background rounded-md transition-colors"
               >
                 <img
@@ -250,12 +266,13 @@ console.log('showMenuToggle', showMobileMenu)
                 />
                 <span>Publicar</span>
               </Link>
-              <button className="flex items-center p-2 my-2 text-text-secondary hover:bg-primary hover:text-background rounded-md transition-colors"
+              <button
+                className="flex items-center p-2 my-2 text-text-secondary hover:bg-primary hover:text-background rounded-md transition-colors"
                 onClick={() => {
                   handleShowReservations();
                   setShowMobileMenu(false);
-                }
-                }>
+                }}
+              >
                 <img
                   src={reservedIcon}
                   alt="Reservas"
@@ -263,7 +280,8 @@ console.log('showMenuToggle', showMobileMenu)
                 />
                 <span>Reservas</span>
               </button>
-              <button className="flex items-center p-2 my-2 text-text-secondary hover:primary hover:text-background rounded-md transition-colors"
+              <button
+                className="flex items-center p-2 my-2 text-text-secondary hover:primary hover:text-background rounded-md transition-colors"
                 onClick={() => {
                   handleShowSubscriptions();
                   setShowMobileMenu(false);
@@ -311,13 +329,16 @@ console.log('showMenuToggle', showMobileMenu)
             </svg>
           </button>
           <div className="flex items-center space-x-4">
-          <div className="w-10 h-10 rounded-full overflow-hidden" onClick={() => setModalIsOpen(true)}>
-                <img
-                  className="container w-full h-full object-cover"
-                  src={imgUser ? imgUser : userIcon}
-                  alt="Perfil"
-                />
-               </div>
+            <div
+              className="w-10 h-10 rounded-full overflow-hidden"
+              onClick={() => setModalIsOpen(true)}
+            >
+              <img
+                className="container w-full h-full object-cover"
+                src={imgUser ? imgUser : userIcon}
+                alt="Perfil"
+              />
+            </div>
             <div>
               <h2 className="text-md font-bold text-primary">
                 {dataUser ? dataUser.name : <Skeleton width={80} />}
@@ -327,14 +348,11 @@ console.log('showMenuToggle', showMobileMenu)
               </p>
             </div>
           </div>
-         <Link to={'/'}>
-         <button
-            onClick={() => {}}
-            className="text-accent font-bold"
-          >
-            Atrás
-          </button>
-         </Link>
+          <Link to={"/"}>
+            <button onClick={() => {}} className="text-accent font-bold">
+              Atrás
+            </button>
+          </Link>
         </header>
 
         <main className="p-6">
@@ -345,61 +363,74 @@ console.log('showMenuToggle', showMobileMenu)
             existingImage={imgUser ? URLStatic + imgUser : userIcon}
           />
 
-          {showVerifyAlert && <VerifyAlert />
-
-          }
+          {showVerifyAlert && <VerifyAlert />}
 
           <div className="flex flex-col w-full">
             {/* Container para mostrar las opciones con diseño de skeleton por defecto */}
-            <div className={`standartContainer w-full h-auto min-h-[150px] border my-6 rounded-2xl p-2 ${showOwner ? "bg-indigo-600" : ""}`} onClick={ownerHandleShow} >
-              {
-                (
-                  /* Actual content when showOwner is true */
-                  <div><OwnerTable propertys={dataOwner} /></div>
-                ) || (
-                  /* Skeleton de la sección de opciones de usuario */
-                  <div className="space-y-4">
+            <div
+              className={`standartContainer w-full h-auto min-h-[150px] border my-6 rounded-2xl p-2 ${
+                showOwner ? "bg-indigo-600" : ""
+              }`}
+              onClick={ownerHandleShow}
+            >
+              {(
+                /* Actual content when showOwner is true */
+                <div>
+                  <OwnerTable propertys={dataOwner} />
+                </div>
+              ) || (
+                /* Skeleton de la sección de opciones de usuario */
+                <div className="space-y-4">
+                  <Skeleton
+                    height={390}
+                    baseColor="#fff"
+                    highlightColor="#eff"
+                    className="w-3/4 mx-auto"
+                  />
+                  <Skeleton
+                    height={30}
+                    baseColor="#fff"
+                    highlightColor="#fff"
+                    className="w-5/6 mx-auto"
+                  />
+                  <div className="grid grid-cols-2 gap-4 ">
                     <Skeleton
-                      height={390}
+                      height={60}
                       baseColor="#fff"
-                      highlightColor="#eff"
-                      className="w-3/4 mx-auto"
+                      highlightColor="#fff"
+                      className="w-2/3 mx-auto"
                     />
                     <Skeleton
                       height={30}
                       baseColor="#fff"
                       highlightColor="#fff"
-                      className="w-5/6 mx-auto"
+                      className="w-4/5 mx-auto"
                     />
-                    <div className="grid grid-cols-2 gap-4 ">
-                      <Skeleton
-                        height={60}
-                        baseColor="#fff"
-                        highlightColor="#fff"
-                        className="w-2/3 mx-auto"
-                      />
-                      <Skeleton
-                        height={30}
-                        baseColor="#fff"
-                        highlightColor="#fff"
-                        className="w-4/5 mx-auto"
-                      />
-                    </div>
                   </div>
-                )
-              }
-
-
+                </div>
+              )}
             </div>
 
-            <div className={`standartContainer w-full h-auto min-h-[150px] border my-6 rounded-2xl p-2 ${showReservations ? "bg-secondary text-white" : ""}`} onClick={handleShowReservations}
-              
+            <div
+              className={`standartContainer w-full h-auto min-h-[150px] border my-6 rounded-2xl p-2 ${
+                showReservations ? "bg-secondary text-white" : ""
+              }`}
+              onClick={handleShowReservations}
             >
-              <h3 className="text-2xl font-semibold text-gray-400">Tus reservas</h3>
+              <h3 className="text-2xl font-semibold text-gray-400">
+                Tus reservas
+              </h3>
             </div>
 
-            <div className={`standartContainer w-full h-auto min-h-[150px] border my-6 rounded-2xl p-2 ${showSubscriptions ? "bg-secondary text-white" : ""}`} onClick={handleShowSubscriptions}>
-              <h3 className="text-2xl font-semibold text-gray-400">Tus suscripciones</h3>
+            <div
+              className={`standartContainer w-full h-auto min-h-[150px] border my-6 rounded-2xl p-2 ${
+                showSubscriptions ? "bg-secondary text-white" : ""
+              }`}
+              onClick={handleShowSubscriptions}
+            >
+              <h3 className="text-2xl font-semibold text-gray-400">
+                Tus suscripciones
+              </h3>
             </div>
 
             {/* Mi Cuenta */}
@@ -421,7 +452,6 @@ console.log('showMenuToggle', showMobileMenu)
             </div>
 
             {/* Ajustes */}
-           
           </div>
 
           {err && <Errors error={err} />}

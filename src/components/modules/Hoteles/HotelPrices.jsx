@@ -320,6 +320,12 @@ const HotelPrices = ({ hotel }) => {
           </div>
         ))}
       </div>
+      <div className="p-2 text-text-secondary flex flex-col justify-center items-center mb-10">
+        <div className="text-4xl text-center max-sm:text-text-alt font-semibold my-2">
+          Buscabas algo más?
+        </div>
+        <span className="text-primary">Encuentra opciones similares con el mejor precio del lugar</span>
+      </div>
       <div>{true ? <SliderCardsHotel /> : null}</div>
     </div>
   );

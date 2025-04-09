@@ -37,7 +37,7 @@ const GlobalContextProvider = ({ children }) => {
     setCustomShooter(bol || !customShooter);
   };
 
-  const handleShowMapContainer = (bol, searchTerm) => {
+  const handleShowMapContainer = (bol=false, searchTerm) => {
     if (searchTerm) {
       console.log("searchTerm contextoGlobal", searchTerm);
       setFilters((prevFilters) => ({

@@ -55,7 +55,7 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
 
       console.log("Response:", response);
       setImages([]); // Limpiar las imágenes después de enviarlas
-      navigate("/home"); // Redirigir a la página de inicio
+      navigate("/"); // Redirigir a la página de inicio
     } catch (error) {
       console.error("Error:", error);
       setErr(error.response?.data?.message || "Error al enviar las imágenes.");
@@ -63,9 +63,8 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
   };
 
   return (
-    <div className="h-full w-full grid place-content-center bg-white min-h-screen ">
-      <img src="https://img-aw-hoteles.s3.us-east-2.amazonaws.com/1stock-photo-woman-s-hand-holda-plate-of-instant-buckwheat-with-a-mountain-as-a-backdrop-the-concept-of-1028923954.jpg" alt="imagen" />
-      <div className="w-full min-h-screen border border-green-400">
+    <div className="h-full w-full grid place-content-center bg-background min-h-screen ">
+      <div className="w-full min-h-screen ">
         <h1 className="text-4xl text-center mb-2 font-extrabold">
           <span className="text-blue-400">Imágenes </span>de tu propiedad
           <span className="text-blue-400">...</span>
@@ -84,7 +83,7 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
                     className="h-32 w-32 object-cover rounded-lg shadow-md"
                   />
                   <button
-                    className="absolute top-0 right-0 bg-white m-1 text-alert font-semibold border bg-opacity-70 border-alert  rounded-full h-7 w-7 text-sm"
+                    className="absolute top-0 right-0 bg-background m-1 text-alert font-semibold border bg-opacity-70 border-alert  rounded-full h-7 w-7 text-sm"
                     onClick={(e) => {
                       e.preventDefault();
                       removeImage(index);
@@ -98,7 +97,7 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
             </div>
 
             <div className="w-full flex justify-center mb-10">
-              <label className="bg-secondary text-white text-center py-4 px-4 rounded-lg">
+              <label className="bg-green-500 text-text-primary text-center p-2 rounded-lg">
                 <input
                   className="hidden"
                   type="file"
@@ -113,7 +112,7 @@ const FormHotel03 = ({ formData: formDataGlobal }) => {
             <div className="w-full flex justify-center">
              <div className="w-full flex flex-col items-center">
              <button
-                className={`border-2 max-w-[500px] mb-5 flex justify-center items-center rounded-xl w-11/12 h-12 text-white font-semibold ${
+                className={` max-w-[500px] mb-5 flex justify-center items-center rounded-xl w-11/12 h-12 text-white font-semibold ${
                   images.length > 0
                     ? "bg-primary"
                     : "bg-gray-400 cursor-not-allowed"

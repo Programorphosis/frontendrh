@@ -498,7 +498,7 @@ const Home = () => {
               {!showAllFilters ? null : (
                 <div className="w-full h-full flex flex-col items-center justify-start bg-black bg-opacity-70 fixed overflow-y-scroll scrollbar-hide top-0 left-0 z-40 lg:text-text-primary  text-start  text-sm lg:bg-background lg:z-0 lg:relative ">
                   <div
-                    className={` lg:w-full w-96 h-auto  lg:relative  bg-background lg:bg-backgroundAlt  text-medium flex flex-col rounded-2xl lg:rounded-2xl p-4 `}
+                    className={` lg:w-full w-full sm:w-96 h-auto  lg:relative  bg-background lg:bg-backgroundAlt  text-medium flex flex-col rounded-2xl lg:rounded-2xl p-4 `}
                   >
                     {/* atras */}
                     <span

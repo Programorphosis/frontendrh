@@ -154,13 +154,13 @@ const HotelInfo = ({ hotel }) => {
           </section>
 
           {/* bloque mapa y direcciones */}
-          <section className="BLOQUE-UBICA-DIRECC w-full h-auto sm:flex sm:pt-2 lg:flex-col lg:px-4  ">
+          <section className="BLOQUE-UBICA-DIRECC w-full h-auto sm:flex sm:pt-2 lg:flex-col lg:px-4 overflow-hidden  ">
             {/* mapa */}
             <div className="MAPA w-full sm:rounded-none  overflow-hidden md:w-1/2 lg:w-full ">
               <span className="mb-4 font-semibold text-xl text-text-secondary p-1">
                 Ubicacion
               </span>
-              <div className="bloque-mmapa w-full border border-borderAlt rounded-2xl"> 
+              <div className="bloque-mmapa w-full border border-borderAlt rounded-2xl overflow-hidden"> 
                 <div className="mapContainer w-full h-60 bg-emerald-300 rounded-t-2xl m-0 ">
                   {showMap && (
                     <MapModal

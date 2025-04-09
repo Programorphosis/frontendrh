@@ -105,11 +105,11 @@ const handleCheckboxChange = (e) => {
     .map((service) => service.name);
 
   return (
-    <div className="h-full w-full grid place-content-center bg-white py-10">
+    <div className="h-full w-full grid place-content-center bg-background py-10">
       <div className="w-screen h-auto my-5 flex flex-col justify-center items-center rounded-xl">
         <h1 className="text-4xl text-center mb-10 font-bold">
-          <span className="text-blue-400">Servicios </span>del Hotel
-          <span className="text-blue-400">...</span>
+          <span className="text-primary">Servicios </span>del Hotel
+          <span className="text-primary">...</span>
         </h1>
 
         <form
@@ -118,8 +118,8 @@ const handleCheckboxChange = (e) => {
         >
           <div className="flex flex-col justify-center items-center md:w-[900px] mb-5">
             <div className="flex flex-col w-full mb-10 md:mb-5 border-b-2 pb-5">
-              <span className="font-bold text-2xl text-primary">Descripción</span>
-              <span className="text-xl text-primary mb-8 mt-2">
+              <span className="font-bold text-2xl text-text-primary">Descripción</span>
+              <span className="text-medium text-primary mb-8 mt-2">
                 Escribe una descripción detallada de tu hotel. Las personas
                 verán esto en los resultados de sus búsquedas, por favor utiliza
                 bien este espacio.
@@ -139,7 +139,7 @@ const handleCheckboxChange = (e) => {
             </div>
 
             <div className="flex flex-col w-full mb-10 md:mb-5">
-              <span className="font-bold text-2xl text-primary">Servicios</span>
+              <span className="font-bold text-2xl text-text-primary">Servicios</span>
               <div className="mb-4 mt-2">
                 <label className="text-xl mb-4"></label>
                 <div className="flex flex-wrap gap-2 mt-2">
@@ -171,7 +171,7 @@ const handleCheckboxChange = (e) => {
                 {[...new Set(services.map((service) => service.category))].map(
                   (category) => (
                     <fieldset key={category} className="mb-4 border p-2 rounded-lg">
-                      <legend className="text-xl font-bold text-primary">
+                      <legend className="text-xl font-bold text-text-alt">
                         {category}
                       </legend>
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
@@ -180,7 +180,7 @@ const handleCheckboxChange = (e) => {
                           .map((service) => (
                             <label
                               key={service.id}
-                              className="flex items-center space-x-2 cursor-pointer"
+                              className="flex items-center space-x-2 cursor-pointer text-primary"
                             >
                               <input
                                 type="checkbox"
