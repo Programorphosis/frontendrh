@@ -165,7 +165,7 @@ const GlobalContextProvider = ({ children }) => {
             "Content-Type": "application/json",
             Authorization: token,
           },
-          params: { page, limit: 7 },
+          params: { page, limit: 20 },
         };
         try {
           const res = await axios.get(`${URLStatic}/user/hoteles`, config);
