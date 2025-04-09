@@ -6,13 +6,17 @@ import PropTypes from "prop-types";
 import { staticHotels, staticRoomTypes, staticImgUser, staticServices, staticServicesIcons } from "../context/StaticData.js"; // Ajusta la ruta
 
 const GlobalContextProvider = ({ children }) => {
-  const URLStatic = 'https://backendrh-production.up.railway.app'
+  const URLStatic = 'http://localhost:3333'; // Puedes definir esta variable en .env
   console.log("URLStatic", URLStatic);
   const useStaticData = false; // Puedes definir esta variable en .env
 
-  // Estados
+  // Estados generales
   const [allHotels, setAllHotels] = useState(null);
   const [isLoadingHotels, setIsLoadingHotels] = useState(true);
+  // Estados para la paginación
+  const [page, setPage] = useState(1); // página actual
+  const [totalPages, setTotalPages] = useState(0);
+  // Otros estados (ejemplo: roomTypes, user, etc.)
   const [roomTypes, setRoomTypes] = useState([]);
   const [imgUser, setImgUser] = useState(null);
   const [imageChanged, setImageChanged] = useState(false);
@@ -37,7 +41,7 @@ const GlobalContextProvider = ({ children }) => {
     setCustomShooter(bol || !customShooter);
   };
 
-  const handleShowMapContainer = (bol=false, searchTerm) => {
+  const handleShowMapContainer = (bol = false, searchTerm) => {
     if (searchTerm) {
       console.log("searchTerm contextoGlobal", searchTerm);
       setFilters((prevFilters) => ({
@@ -87,16 +91,22 @@ const GlobalContextProvider = ({ children }) => {
     window.location.reload();
   };
 
- // Cargar datos estáticos en local storage si useStaticData está habilitado
+  // Cargar datos estáticos en localStorage si useStaticData está habilitado
   useEffect(() => {
     if (useStaticData) {
-      window.localStorage.setItem("sessionLogin", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfaWQiOjE2LCJ1c2VybmFtZSI6ImdlcnNvbjEyMyIsImVtYWlsIjoiZ2RtcDkyQGhvdG1haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkU0haMllxbXEuVjJPdllBNlRjTmkzdXg4N3FQbUxVWDREdnpkVWJQU1JqdDNjY3BseHVTb2EiLCJ0ZW1wX3Rva2VuIjpudWxsLCJpc192ZXJpZnkiOjEsImlhdCI6MTc0MTI2MzA2OX0.R1SVzTtdfXzxAlqKVAaOs3y0vjruXfpiYnskdo6TCPk");
-      window.localStorage.setItem("sessionLoginUser", JSON.stringify({ id: 10, user_id: 16, username: "gerson123", email: "gdmp92@hotmail.com", is_verify: 1 }));
+      window.localStorage.setItem(
+        "sessionLogin",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfaWQiOjE2LCJ1c2VybmFtZSI6ImdlcnNvbjEyMyIsImVtYWlsIjoiZ2RtcDkyQGhvdG1haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkU0haMllxbXEuVjJPdllBNlRjTmkzdXg4N3FQbUxVWDREdnpkVWJQU1JqdDNjY3BseHVTb2EiLCJ0ZW1wX3Rva2VuIjpudWxsLCJpc192ZXJpZnkiOjEsImlhdCI6MTc0MTI2MzA2OX0.R1SVzTtdfXzxAlqKVAaOs3y0vjruXfpiYnskdo6TCPk"
+      );
+      window.localStorage.setItem(
+        "sessionLoginUser",
+        JSON.stringify({ id: 10, user_id: 16, username: "gerson123", email: "gdmp92@hotmail.com", is_verify: 1 })
+      );
       window.localStorage.setItem("favorites_10", JSON.stringify([19, 27, 20, 21]));
     }
   }, [useStaticData]);
 
-  // Obtener tipos de habitaciones servicios e iconos de servicios
+  // Obtener tipos de habitaciones, servicios e iconos de servicios
   useEffect(() => {
     const getRoomTypes = async () => {
       if (useStaticData) {
@@ -104,7 +114,6 @@ const GlobalContextProvider = ({ children }) => {
       } else {
         try {
           const response = await axios.get(`${URLStatic}/user/gettypes/room_types`);
-          
           setRoomTypes(response.data.body);
         } catch (error) {
           console.log("Error fetching room types, usando datos estáticos:", error);
@@ -118,7 +127,6 @@ const GlobalContextProvider = ({ children }) => {
       } else {
         try {
           const response = await axios.get(`${URLStatic}/user/gettypes/services`);
-        
           setServicesList(response.data.body);
         } catch (error) {
           console.log("Error fetching services, usando datos estáticos:", error);
@@ -133,33 +141,38 @@ const GlobalContextProvider = ({ children }) => {
         try {
           setServicesIcons(staticServicesIcons);
         } catch (error) {
-          console.log("Error fetching services, usando datos estáticos:", error);
+          console.log("Error fetching services icons, usando datos estáticos:", error);
           setServicesIcons(staticServicesIcons);
         }
       }
-    }
+    };
     getServicesIcons();
     getServices();
     getRoomTypes();
   }, [useStaticData]);
 
-  // Obtener hoteles
+  // Obtener hoteles con paginación
   useEffect(() => {
     const getData = async () => {
       if (useStaticData) {
         setAllHotels(staticHotels);
         setIsLoadingHotels(false);
+        setPage(1);
+        setTotalPages(1);
       } else {
         const config = {
           headers: {
             "Content-Type": "application/json",
             Authorization: token,
           },
+          params: { page, limit: 5 },
         };
         try {
           const res = await axios.get(`${URLStatic}/user/hoteles`, config);
-        
-          setAllHotels(res.data.body);
+          const { data, totalPages, page: currentPage } = res.data.body;
+          setAllHotels(data);
+          setPage(currentPage);
+          setTotalPages(totalPages);
           setIsLoadingHotels(false);
         } catch (error) {
           console.error("Error fetching hotels data, usando datos estáticos:", error);
@@ -169,7 +182,7 @@ const GlobalContextProvider = ({ children }) => {
       }
     };
     getData();
-  }, [token, customShooter, useStaticData]);
+  }, [token, customShooter, useStaticData, page]);
 
   // Obtener imagen de perfil
   useEffect(() => {
@@ -177,7 +190,7 @@ const GlobalContextProvider = ({ children }) => {
       if (user) {
         const id = user.user_id;
         if (useStaticData) {
-          setImgUser(staticImgUser); // Ajusta esta URL según tus datos estáticos
+          setImgUser(staticImgUser);
           setImageChanged(true);
         } else {
           try {
@@ -188,7 +201,6 @@ const GlobalContextProvider = ({ children }) => {
               },
             };
             const response = await axios.get(`${URLStatic}/user/img_user/${id}`, config);
-           
             setImgUser(response.data.body.url);
             setImageChanged(true);
           } catch (error) {
@@ -240,10 +252,6 @@ const GlobalContextProvider = ({ children }) => {
     }
   };
 
-  
-
-
-
   return (
     <loginContext.Provider
       value={{
@@ -270,6 +278,9 @@ const GlobalContextProvider = ({ children }) => {
         setAllHotels,
         isLoadingHotels,
         setIsLoadingHotels,
+        page,
+        setPage,
+        totalPages,
         showMapContainer,
         handleShowMapContainer,
         filters,

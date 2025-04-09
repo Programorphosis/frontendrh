@@ -65,7 +65,7 @@ const Maps = ({ onClose, defaultCenter, capturedChoords, onPlaceSelected }) => {
   };
 
   return (
-    <div className="h-[500px] w-full  rounded bg-white mb-10">
+    <div className="h-full w-full  rounded bg-white mb-10">
       <Map
         onClick={handleMapClick}
         defaultZoom={16}

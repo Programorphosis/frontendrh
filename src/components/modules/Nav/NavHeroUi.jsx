@@ -206,7 +206,7 @@ export default function App() {
               color="secondary"
               name="{user?.name || 'Usuario'}"
               size="sm"
-              src={imgUser || HotelLogo}
+              src={imgUser || null}
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Opciones de perfil" variant="flat">

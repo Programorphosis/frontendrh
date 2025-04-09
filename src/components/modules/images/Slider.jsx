@@ -18,9 +18,9 @@ const FullScreenPhotos = ({ images, initialIndex = 0, onClose }) => {
   };
 
   return (
-    <div className="fixed  min-h-[320px] w-full inset-0 z-50 bg-black bg-opacity-90 flex justify-center items-center rounded-md">
+    <div className="fixed  min-h-[320px] w-full inset-0 z-50 bg-background bg-opacity-90 flex justify-center items-center rounded-md">
       <button
-        className="h-10 w-10 absolute top-4 right-4 text-white text-5xl font-bold hover:text-gray-300"
+        className="h-10 w-10 absolute top-4 right-4 text-text-secondary text-5xl font-bold hover:text-gray-300"
         onClick={onClose}
       >
         &times;

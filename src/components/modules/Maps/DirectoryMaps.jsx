@@ -134,7 +134,7 @@ console.log('userLocation', userLocation);
   console.log(pois);
 
   return (
-    <div className="h-full min-h-screen w-full z-30  bg-black mb-10  ">
+    <div className="h-full min-h-screen w-full z-30  bg-background mb-10  ">
       <Map
         mapId={mapId}
         disableDefaultUI={true}
