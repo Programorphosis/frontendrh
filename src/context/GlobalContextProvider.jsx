@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { staticHotels, staticRoomTypes, staticImgUser, staticServices, staticServicesIcons } from "../context/StaticData.js"; // Ajusta la ruta
 
 const GlobalContextProvider = ({ children }) => {
-  const URLStatic = 'http://localhost:3333'; // Puedes definir esta variable en .env
+  const URLStatic = 'https://backendrh-production.up.railway.app/'; // Puedes definir esta variable en .env
   console.log("URLStatic", URLStatic);
   const useStaticData = false; // Puedes definir esta variable en .env
 
