@@ -141,7 +141,7 @@ const handShowAlert = () => {
   );
 
   return (
-    <section className="flex flex-row justify-center w-full shadow-border-blur rounded-3xl overflow-hidden bg-white">
+    <section className="flex flex-row justify-center w-full shadow-border-blur rounded-3xl overflow-hidden bg-background p-4 mb-6">
 
       {/* Formulario para agregar nuevas habitaciones */}
 
@@ -154,7 +154,7 @@ const handShowAlert = () => {
 
           {/* Selector de tipo de habitación */}
           <div className="w-full mb-3">
-            <label className="block text-left mb-1 font-medium text-gray-700">
+            <label className="block text-left mb-1 font-medium text-text-secondary">
               Tipo de habitación
             </label>
             <select
@@ -176,7 +176,7 @@ const handShowAlert = () => {
           {/* Input de cantidad */}
           <div className="flex flex-row justify-between w-full ">
             <div className="w-full mr-1">
-              <label className="block text-left mb-1 font-medium text-gray-700">
+              <label className="block text-left mb-1 font-medium text-text-secondary">
                 Cantidad
               </label>
               <input
@@ -192,7 +192,7 @@ const handShowAlert = () => {
 
             {/* Input de precio */}
             <div className="w-full ml-1">
-              <label className="block text-left mb-1 font-medium text-gray-700">
+              <label className="block text-left mb-1 font-medium text-text-secondary">
                 Precio
               </label>
               <input
@@ -209,7 +209,7 @@ const handShowAlert = () => {
 
           {/* Input de disponibles */}
           <div className="w-full mb-3">
-            <label className="block text-left mb-1 font-medium text-gray-700">
+            <label className="block text-left mb-1 font-medium text-text-secondary">
               Disponibles
             </label>
             <div className="flex items-center w-full">

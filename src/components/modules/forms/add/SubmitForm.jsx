@@ -231,43 +231,42 @@ const ReviewHotelForm = ({ formData, handleFormDataSubmit, onClose, next, back }
   } = formData;
   const serviciosArray = servicios
 return (
-  <div className="flex flex-col items-center p-6 bg-gray-50 rounded-lg w-full  max-w-4xl mx-auto my-">
-    <h1 className="text-3xl sm:text-4xl font-extrabold  text-center text-gray-800 mt-12 mb-8">
+  <div className="flex flex-col items-center p-6 bg-background rounded-lg w-full  max-w-4xl mx-auto my-">
+    <h1 className="text-3xl sm:text-4xl font-extrabold  text-center text-text-primary mt-12 mb-8">
       Revisa <span className="text-primary">tu información</span>
     </h1>
     <div className="w-full space-y-6">
       {/* Información General */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-bold text-center mb-10 text-secondary ">Información General</h3>
-        <p className="text-gray-600"><strong>ID:</strong> {id === 0 ? "Nuevo" : id}</p>
-        <p className="text-gray-600"><strong>ID Usuario:</strong> {id_user}</p>
-        <p className="text-gray-600"><strong>Nombre:</strong> {name}</p>
-        <p className="text-gray-600"><strong>Email:</strong> {email}</p>
-        <p className="text-gray-600"><strong>Teléfono:</strong> {telefono}</p>
-        <p className="text-gray-600"><strong>Segundo Teléfono:</strong> {segundoTelefono}</p>
-        <p className="text-gray-600">
-          <strong>Descripción:</strong>
-          <span className="block mt-2 bg-gray-100 p-4 rounded-lg text-sm text-gray-700">
+      <div className="bg-backgroundAlt rounded-lg shadow-md p-6">
+        <h3 className="text-lg font-bold text-center mb-10 text-text-secondary ">Información General</h3>
+        <p className=""><strong className="text-secondary">ID:</strong> {id === 0 ? "Nuevo" : id}</p>
+        <p className=""><strong className="text-secondary">ID Usuario:</strong> {id_user}</p>
+        <p className=""><strong className="text-secondary">Nombre:</strong> {name}</p>
+        <p className=""><strong className="text-secondary">Email:</strong> {email}</p>
+        <p className=""><strong className="text-secondary">Teléfono:</strong> {telefono}</p>
+        <p className=""><strong className="text-secondary">Segundo Teléfono:</strong> {segundoTelefono}</p>
+        <p className=""><strong  className="text-secondary">Descripción:</strong>
+          <span className="block mt-2 bg-background p-4 rounded-lg text-sm text-text-secondary">
             {descripcion}
           </span>
         </p>
       </div>
 
       {/* Ubicación */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-bold text-center mb-10 text-secondary ">Ubicación</h3>
-        <p className="text-gray-600"><strong>Ciudad:</strong> {city}</p>
-        <p className="text-gray-600"><strong>País:</strong> {country}</p>
-        <p className="text-gray-600"><strong>Sector:</strong> {sector}</p>
-        <p className="text-gray-600"><strong>Dirección:</strong> {directions}</p>
-        <p className="text-gray-600"><strong>Barrio:</strong> {barrio}</p>
-        <p className="text-gray-600"><strong>Indicaciones:</strong> {indications}</p>
-        <p className="text-gray-600"><strong>Coordenadas:</strong> {lat}, {lng}</p>
+      <div className="bg-backgroundAlt rounded-lg shadow-md p-6">
+        <h3 className="text-lg font-bold text-center mb-10 text-text-secondary ">Ubicación</h3>
+        <p><strong className="text-secondary">Ciudad:</strong> {city}</p>
+        <p><strong className="text-secondary">País:</strong> {country}</p>
+        <p><strong className="text-secondary">Sector:</strong> {sector}</p>
+        <p><strong className="text-secondary">Dirección:</strong> {directions}</p>
+        <p><strong className="text-secondary">Barrio:</strong> {barrio}</p>
+        <p><strong className="text-secondary">Indicaciones:</strong> {indications}</p>
+        <p><strong className="text-secondary">Coordenadas:</strong> {lat}, {lng}</p>
       </div>
 
       {/* Servicios */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-bold text-center mb-10 text-secondary">Servicios</h3>
+      <div className="bg-backgroundAlt rounded-lg shadow-md p-6">
+        <h3 className="text-lg font-bold text-center mb-10 text-text-secondary">Servicios</h3>
         <ul className="flex flex-wrap gap-2">
           {serviciosArray.length > 0 ? (
             serviciosArray.map((serviceId) => {
@@ -288,7 +287,7 @@ return (
       </div>
 
       {/* rooms */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-backgroundAlt rounded-lg shadow-md p-6">
         <h3 className="text-lg font-bold text-center mb-10 text-secondary ">Habitaciones</h3>
         {rooms && Object.keys(rooms).length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

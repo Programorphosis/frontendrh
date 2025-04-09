@@ -96,7 +96,7 @@ const FormHotel01 = ({ handleChangeForms, formData, onClose, next, back }) => {
     };
 
     return (
-      <div className="h-full w-full grid place-content-center bg-white">
+      <div className="h-full w-full grid place-content-center bg-background">
       <div className=" w-screen h-auto my-5 flex flex-col justify-center items-center rounded-xl">
         <h1 className="text-4xl text-center mb-10 mx-2 font-bold">
         <span className=" text-secondary">Unos datos mas </span>
@@ -317,7 +317,7 @@ const FormHotel01 = ({ handleChangeForms, formData, onClose, next, back }) => {
     };
 
     return (
-      <div className="h-full w-full grid place-content-center bg-white">
+      <div className="h-full w-full grid place-content-center bg-background">
         <div className="w-screen h-auto my-5 flex flex-col justify-center items-center rounded-xl">
           <h1 className="text-4xl text-center mb-10 font-bold">
             <span className=" text-secondary">Datos básicos </span>de tu
@@ -522,10 +522,10 @@ formData.rooms && (DataForm03['rooms'] = formData.rooms);
     console.log('habitaciones', form03Data);
 
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white w-screen ">
-        <div className="w-11/12 max-w-4xl bg-white rounded-lg my-10">
-          <h1 className="w-full  text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">
-            Capacidad <span className="text-secondary">y</span> precios
+      <div className="min-h-screen flex items-center justify-center bg-background w-screen ">
+        <div className="w-11/12 max-w-4xl rounded-lg my-10">
+          <h1 className="w-full  text-3xl sm:text-4xl font-bold text-center mb-8 text-text-primary">
+            Capacidad <span className="text-primary">y</span> precios
           </h1>
 
           <form className="">

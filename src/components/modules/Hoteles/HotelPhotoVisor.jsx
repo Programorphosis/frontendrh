@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import PhotoVisor from "../images/PhotoVisor";
+import SliderPhotos from "../images/Slider";
 
 const HotelPhotoVisor = ({ images }) => {
+  const [showSlider, setShowSlider] = useState(false);
   if (!images || images.length === 0) return null;
 
   //recargar si imagenes cambia
@@ -15,18 +17,27 @@ const HotelPhotoVisor = ({ images }) => {
   }, [images]);
 
   return (
-    <div className=" h-auto">
+    <div
+      className=" h-auto"
+     
+    >
       {/* Vista en pantallas menores a sm: solo la imagen grande */}
       <div className="sm:hidden w-full h-full flex justify-center items-center relative ">
-        <PhotoVisor imagesHotel={images}/>
+        <PhotoVisor imagesHotel={images} />
       </div>
 
       {/* Vista en pantallas sm (≥sm hasta md): imagen grande a la izquierda y 2 imágenes pequeñas a la derecha */}
+      {showSlider && (
+        <SliderPhotos images={images} onClose={() => setShowSlider(false)} />
+      )}
       <div className="hidden sm:flex lg:hidden gap-2">
         {/* Imagen grande */}
         <div className="w-2/3">
           <img
             src={images?.[0].url}
+             onClick={(e) => {
+        setShowSlider(true);
+      }}
             alt="Imagen principal"
             className="w-full h-full object-cover aspect-video "
           />
@@ -36,6 +47,9 @@ const HotelPhotoVisor = ({ images }) => {
           {images?.[1] && (
             <img
               src={images?.[1].url}
+               onClick={(e) => {
+        setShowSlider(true);
+      }}
               alt="Imagen secundaria 1"
               className="w-full h-full object-cover aspect-video "
             />
@@ -43,6 +57,9 @@ const HotelPhotoVisor = ({ images }) => {
           {images?.[2] && (
             <img
               src={images?.[2].url}
+               onClick={(e) => {
+        setShowSlider(true);
+      }}
               alt="Imagen secundaria 2"
               className="w-full h-full object-cover aspect-video "
             />
@@ -56,6 +73,9 @@ const HotelPhotoVisor = ({ images }) => {
         <div className="w-1/2">
           <img
             src={images?.[0].url}
+             onClick={(e) => {
+        setShowSlider(true);
+      }}
             alt="Imagen principal"
             className="w-full h-full object-cover aspect-video "
           />
@@ -65,6 +85,9 @@ const HotelPhotoVisor = ({ images }) => {
           {images?.[1] && (
             <img
               src={images?.[1].url}
+               onClick={(e) => {
+        setShowSlider(true);
+      }}
               alt="Imagen secundaria 1"
               className="w-full h-full object-cover aspect-video "
             />
@@ -72,6 +95,9 @@ const HotelPhotoVisor = ({ images }) => {
           {images?.[2] && (
             <img
               src={images?.[2].url}
+               onClick={(e) => {
+        setShowSlider(true);
+      }}
               alt="Imagen secundaria 2"
               className="w-full h-full object-cover aspect-video "
             />
@@ -79,6 +105,9 @@ const HotelPhotoVisor = ({ images }) => {
           {images?.[3] && (
             <img
               src={images?.[3].url}
+               onClick={(e) => {
+        setShowSlider(true);
+      }}
               alt="Imagen secundaria 3"
               className="w-full h-full object-cover aspect-video "
             />
@@ -86,6 +115,9 @@ const HotelPhotoVisor = ({ images }) => {
           {images?.[4] && (
             <img
               src={images?.[4].url}
+               onClick={(e) => {
+        setShowSlider(true);
+      }}
               alt="Imagen secundaria 4"
               className="w-full h-full object-cover aspect-video "
             />

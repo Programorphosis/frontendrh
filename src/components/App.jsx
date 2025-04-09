@@ -16,6 +16,7 @@ const Favourites = lazy(() => import("./modules/Dashboards/Favourites"));
 const Hotel = lazy(() => import("./modules/Hoteles/Hotel"));
 const Blank = lazy(() => import("./modules/Dashboards/userProfile"));
 const Maquetas = lazy(() => import("./modules/Home/SliderCardsHotel"));
+import Loading from "./modules/alerts/Loading";
 
 function App() {
   const { isLogin, setIsLogin, token, showMapContainer, allHotels } =
@@ -30,12 +31,12 @@ function App() {
     <div className={style.App}>
       {/* Renderiza Nav solo si no estamos en la ruta de perfil */}
       {location.pathname !== "/profile" && location.pathname && !showMapContainer && (
-        <Suspense fallback={<div>Cargando navegación...</div>}>
+        <Suspense fallback={<Loading/>}>
           <Nav />
         </Suspense>
       )}
       <div className={`${style.body} bg-background`}>
-        <Suspense fallback={<div>Cargando...</div>}>
+        <Suspense fallback={<Loading/>}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/hoteles">
